@@ -61,8 +61,19 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mergecal"><img src="https://avatars.githubusercontent.com/u/177171386?v=4?s=80" width="80px;" alt="MergeCal"/><br /><sub><b>MergeCal</b></sub></a><br /><a href="https://github.com/mergecal/django-icalendar/commits?author=mergecal" title="Code">💻</a> <a href="#ideas-mergecal" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/mergecal/django-icalendar/commits?author=mergecal" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- prettier-ignore-end -->
 
