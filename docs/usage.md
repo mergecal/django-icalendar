@@ -2,12 +2,17 @@
 
 # Usage
 
-Assuming that you've followed the {ref}`installations steps <installation>`, you're now ready to use this package.
+`django-icalendar` provides Django ORM models for storing and exporting RFC 5545 iCalendar (`.ics`) data.
 
-Start by importing it:
+After {ref}`installing <installation>`, run migrations to create the required tables:
 
-```python
-import django_icalendar
+```bash
+python manage.py migrate
 ```
 
-TODO: Document usage
+See the individual model pages for usage examples:
+
+- **CalendarModel** — store a VCALENDAR and export it as `.ics` bytes
+- **EventModel** — store timed or all-day VEVENTs
+- **AttendeeModel** — attach attendees to events
+- **ConferenceModel** — attach conference links to events
