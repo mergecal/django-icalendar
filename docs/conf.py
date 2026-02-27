@@ -18,7 +18,7 @@ settings.configure(USE_I18N=False)
 project = "Django icalendar"
 copyright = "2026, abe hanoka"
 author = "abe hanoka"
-release = "0.0.0"
+release = "1.0.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

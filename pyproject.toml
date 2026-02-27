@@ -4,7 +4,7 @@ requires = [ "setuptools>=77.0.3" ]
 
 [project]
 name = "django-icalendar"
-version = "0.0.0"
+version = "1.0.0"
 description = "Django models for storing and exporting RFC 5545 iCalendar data."
 readme = "README.md"
 license = "GPL-3.0-only"
