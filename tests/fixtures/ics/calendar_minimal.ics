@@ -1,0 +1,6 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//django-icalendar//django-icalendar//EN
+NAME:Minimal Calendar
+X-WR-CALNAME:Minimal Calendar
+END:VCALENDAR

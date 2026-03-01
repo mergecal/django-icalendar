@@ -43,9 +43,11 @@ urls.repository = "https://github.com/mergecal/django-icalendar"
 [dependency-groups]
 dev = [
   "coverage",
+  "factory-boy>=3.3",
   "pytest==9.*",
   "pytest-django==4.*",
   "sybil[pytest]",
+  "time-machine>=2.13",
 ]
 docs = [
   "furo; python_version>='3.12'",

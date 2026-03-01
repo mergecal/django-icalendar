@@ -1,0 +1,10 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Custom//Custom//EN
+METHOD:PUBLISH
+DESCRIPTION:A full description
+X-WR-CALDESC:A full description
+NAME:Full Calendar
+X-WR-CALNAME:Full Calendar
+COLOR:tomato
+END:VCALENDAR
