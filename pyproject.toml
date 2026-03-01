@@ -33,6 +33,7 @@ classifiers = [
 ]
 dependencies = [
   "django>=4.2",
+  "icalendar>=7",
 ]
 urls."Bug Tracker" = "https://github.com/mergecal/django-icalendar/issues"
 urls.Changelog = "https://github.com/mergecal/django-icalendar/blob/main/CHANGELOG.md"

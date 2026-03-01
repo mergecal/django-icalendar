@@ -412,6 +412,7 @@ dependencies = [
     { name = "django", version = "5.1.15", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-16-django-icalendar-django51' or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django50') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django52' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django42' and extra != 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django42' and extra != 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django60')" },
     { name = "django", version = "5.2.11", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and extra != 'group-16-django-icalendar-django42' and extra != 'group-16-django-icalendar-django50' and extra != 'group-16-django-icalendar-django51') or extra == 'group-16-django-icalendar-django52' or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django50') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django51') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django51') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django60')" },
     { name = "django", version = "6.0.2", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and extra != 'group-16-django-icalendar-django42' and extra != 'group-16-django-icalendar-django50' and extra != 'group-16-django-icalendar-django51' and extra != 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django50') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django51') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django51') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django52' and extra == 'group-16-django-icalendar-django60')" },
+    { name = "icalendar" },
 ]
 
 [package.dev-dependencies]
@@ -444,7 +445,10 @@ docs = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "django", specifier = ">=4.2" }]
+requires-dist = [
+    { name = "django", specifier = ">=4.2" },
+    { name = "icalendar", specifier = ">=7.0" },
+]
 
 [package.metadata.requires-dev]
 dev = [
@@ -509,6 +513,20 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/01/ee/02a2c011bdab74c6fb3c75474d40b3052059d95df7e73351460c8588d963/h11-0.16.0.tar.gz", hash = "sha256:4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1", size = 101250, upload-time = "2025-04-24T03:35:25.427Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl", hash = "sha256:63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86", size = 37515, upload-time = "2025-04-24T03:35:24.344Z" },
+]
+
+[[package]]
+name = "icalendar"
+version = "7.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "python-dateutil" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django50') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django51') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django42' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django51') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django52' and extra == 'group-16-django-icalendar-django60')" },
+    { name = "tzdata" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/8c/51/43458f01e229763b05dd937b5e9d41ef506b6eb8b4bf939f8ea34350b853/icalendar-7.0.2.tar.gz", hash = "sha256:de844ff5cde32f539bea7644e36d8494032a926b933bedb92621f2f239760806", size = 440039, upload-time = "2026-02-24T16:13:42.887Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/62/ab/e0d44b1de0beb703bbc507ca064300b34046f9f9628f052d1a97ffa61b95/icalendar-7.0.2-py3-none-any.whl", hash = "sha256:ad31a5825b39522a30b073c6ced3ffcdf6c02cbb7dab69ba2e4de32ddbf77cc9", size = 437913, upload-time = "2026-02-24T16:13:40.631Z" },
 ]
 
 [[package]]
@@ -743,6 +761,18 @@ wheels = [
 ]
 
 [[package]]
+name = "python-dateutil"
+version = "2.9.0.post0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/66/c0/0c8b6ad9f17a802ee498c46e004a0eb49bc148f2fd230864601a86dcf6db/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3", size = 342432, upload-time = "2024-03-01T18:36:20.211Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427", size = 229892, upload-time = "2024-03-01T18:36:18.57Z" },
+]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -828,6 +858,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/ae/f9/41dc953bbeb056c17d5f7a519f50fdf010bd0553be2d630bc69d1e022703/roman_numerals-4.1.0.tar.gz", hash = "sha256:1af8b147eb1405d5839e78aeb93131690495fe9da5c91856cb33ad55a7f1e5b2", size = 9077, upload-time = "2025-12-17T18:25:34.381Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/04/54/6f679c435d28e0a568d8e8a7c0a93a09010818634c3c3907fc98d8983770/roman_numerals-4.1.0-py3-none-any.whl", hash = "sha256:647ba99caddc2cc1e55a51e4360689115551bf4476d90e8162cf8c345fe233c7", size = 7676, upload-time = "2025-12-17T18:25:33.098Z" },
+]
+
+[[package]]
+name = "six"
+version = "1.17.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
 ]
 
 [[package]]
