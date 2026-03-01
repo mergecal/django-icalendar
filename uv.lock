@@ -404,7 +404,7 @@ wheels = [
 
 [[package]]
 name = "django-icalendar"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "django", version = "4.2.28", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-16-django-icalendar-django42' or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django51') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django50' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django52') or (extra == 'group-16-django-icalendar-django51' and extra == 'group-16-django-icalendar-django60') or (extra == 'group-16-django-icalendar-django52' and extra == 'group-16-django-icalendar-django60')" },
