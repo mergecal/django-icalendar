@@ -23,5 +23,5 @@ contributing
 :caption: API Reference
 :maxdepth: 2
 
-django_icalendar
+django_icalendar.models
 ```

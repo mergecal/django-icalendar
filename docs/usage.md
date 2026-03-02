@@ -2,17 +2,43 @@
 
 # Usage
 
-`django-icalendar` provides Django ORM models for storing and exporting RFC 5545 iCalendar (`.ics`) data.
-
-After {ref}`installing <installation>`, run migrations to create the required tables:
+After {ref}`installing <installation>`, run migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-See the individual model pages for usage examples:
+## CalendarModel
 
-- **CalendarModel** — store a VCALENDAR and export it as `.ics` bytes
-- **EventModel** — store timed or all-day VEVENTs
-- **AttendeeModel** — attach attendees to events
-- **ConferenceModel** — attach conference links to events
+Create a calendar and generate `.ics` bytes:
+
+```{doctest}
+>>> from django_icalendar.models import CalendarModel
+>>> cal = CalendarModel(name="My Calendar")
+>>> b"BEGIN:VCALENDAR" in cal.to_ical()
+True
+>>> b"NAME:My Calendar" in cal.to_ical()
+True
+```
+
+Set optional fields — `color`, `method`, `description`, and `prodid` are all optional:
+
+```{doctest}
+>>> cal = CalendarModel(name="My Calendar", color="tomato", method="PUBLISH")
+>>> b"COLOR:tomato" in cal.to_ical()
+True
+>>> b"METHOD:PUBLISH" in cal.to_ical()
+True
+```
+
+Serve from a Django view:
+
+```python
+from django.http import HttpResponse
+from django_icalendar.models import CalendarModel
+
+
+def calendar_feed(request, pk):
+    cal = CalendarModel.objects.get(pk=pk)
+    return HttpResponse(cal.to_ical(), content_type="text/calendar")
+```

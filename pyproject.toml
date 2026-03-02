@@ -15,7 +15,6 @@ requires-python = ">=3.10"
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
   "Framework :: Django",
-  "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
   "Framework :: Django :: 5.1",
   "Framework :: Django :: 5.2",
@@ -32,7 +31,8 @@ classifiers = [
   "Topic :: Software Development :: Libraries",
 ]
 dependencies = [
-  "django>=4.2",
+  "django>=5",
+  "icalendar>=7",
 ]
 urls."Bug Tracker" = "https://github.com/mergecal/django-icalendar/issues"
 urls.Changelog = "https://github.com/mergecal/django-icalendar/blob/main/CHANGELOG.md"
@@ -42,9 +42,12 @@ urls.repository = "https://github.com/mergecal/django-icalendar"
 [dependency-groups]
 dev = [
   "coverage",
+  "django-stubs[compatible-mypy]",
+  "factory-boy>=3.3",
   "pytest==9.*",
   "pytest-django==4.*",
   "sybil[pytest]",
+  "time-machine>=2.13",
 ]
 docs = [
   "furo; python_version>='3.12'",
@@ -52,7 +55,6 @@ docs = [
   "sphinx==9.*; python_version>='3.12'",
   "sphinx-autobuild; python_version>='3.12'",
 ]
-django42 = [ "django>=4.2a1,<5" ]
 django50 = [ "django>=5.0a1,<5.1" ]
 django51 = [ "django>=5.1a1,<5.2" ]
 django52 = [ "django>=5.2a1,<6" ]
@@ -61,7 +63,6 @@ django60 = [ "django>=6.0a1,<6.1; python_version>='3.12'" ]
 [tool.uv]
 conflicts = [
   [
-    { group = "django42" },
     { group = "django50" },
     { group = "django51" },
     { group = "django52" },
@@ -91,6 +92,7 @@ lint.ignore = [
   "D212", # Multi-line docstring summary should start at the first line
   "D401", # First line of docstring should be in imperative mood
 ]
+lint.per-file-ignores."**/migrations/**" = [ "D", "E501", "RUF012" ]
 lint.per-file-ignores."conftest.py" = [ "D100" ]
 lint.per-file-ignores."docs/conf.py" = [ "D100" ]
 lint.per-file-ignores."setup.py" = [ "D100" ]
@@ -100,6 +102,7 @@ lint.per-file-ignores."tests/**/*" = [
   "D102",
   "D103",
   "D104",
+  "D205",
   "S101",
 ]
 lint.isort.known-first-party = [ "django_icalendar", "tests" ]
@@ -108,14 +111,18 @@ lint.isort.known-first-party = [ "django_icalendar", "tests" ]
 max_supported_python = "3.14"
 
 [tool.pytest]
-minversion = "9.0"
-addopts = [
+ini_options.minversion = "9.0"
+ini_options.addopts = [
   "-v",
   "-Wonce",
   "-p no:doctest",
 ]
-pythonpath = [ "src" ]
-DJANGO_SETTINGS_MODULE = "tests.settings"
+ini_options.pythonpath = [ "src" ]
+ini_options.DJANGO_SETTINGS_MODULE = "tests.settings"
+ini_options.markers = [
+  "unit: Pure unit tests — no database required",
+  "integration: Tests that require a database",
+]
 
 [tool.coverage]
 run.branch = true
@@ -140,17 +147,22 @@ disallow_incomplete_defs = true
 disallow_untyped_defs = true
 mypy_path = "src/"
 no_implicit_optional = true
+plugins = [ "mypy_django_plugin.main" ]
 show_error_codes = true
 warn_unreachable = true
 warn_unused_ignores = true
 exclude = [
   "docs/.*",
   "setup.py",
+  ".*/migrations/.*",
 ]
 overrides = [
   { module = "tests.*", allow_untyped_defs = true },
   { module = "docs.*", ignore_errors = true },
 ]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
 
 [tool.semantic_release]
 version_toml = [ "pyproject.toml:project.version" ]

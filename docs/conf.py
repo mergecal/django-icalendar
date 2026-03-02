@@ -3,14 +3,24 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+import sys
 from pathlib import Path
 from typing import Any
 
+import django
 from django.conf import settings
 from sphinx.application import Sphinx
 from sphinx.ext import apidoc
 
-settings.configure(USE_I18N=False)
+sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
+
+settings.configure(
+    USE_I18N=False,
+    USE_TZ=True,
+    INSTALLED_APPS=["django_icalendar"],
+    DATABASES={"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}},
+)
+django.setup()
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -31,8 +41,15 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
+    "sphinx.ext.doctest",
 ]
-napoleon_google_docstring = False
+napoleon_google_docstring = True
+napoleon_numpy_docstring = False
+
+autodoc_default_options = {
+    "show-inheritance": True,
+    "exclude-members": "DoesNotExist,MultipleObjectsReturned,objects",
+}
 
 # The suffix of source filenames.
 source_suffix = [
@@ -52,6 +69,9 @@ exclude_patterns = [
     "_build",
     "Thumbs.db",
     ".DS_Store",
+    "django_icalendar.rst",
+    "django_icalendar.migrations.rst",
+    "modules.rst",
 ]
 
 
@@ -80,9 +100,13 @@ def run_apidoc(_: Any) -> None:
         [
             "--force",
             "--module-first",
+            "--separate",
             "-o",
             docs_path.as_posix(),
             module_path.as_posix(),
+            (module_path / "migrations").as_posix(),
+            (module_path / "apps.py").as_posix(),
+            (module_path / "admin.py").as_posix(),
         ]
     )
 
