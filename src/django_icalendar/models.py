@@ -14,7 +14,11 @@ class CalendarModel(models.Model):
     """
 
     name = models.CharField(_("name"), max_length=255)
+    """Display name of the calendar (``NAME`` / ``X-WR-CALNAME``)."""
+
     description = models.TextField(_("description"), blank=True)
+    """Optional long description (``DESCRIPTION`` / ``X-WR-CALDESC``)."""
+
     prodid = models.CharField(
         _("product ID"),
         max_length=255,
@@ -24,18 +28,26 @@ class CalendarModel(models.Model):
             "'-//django-icalendar//django-icalendar//EN'."
         ),
     )
+    """``PRODID`` value. Falls back to ``settings.ICALENDAR_PRODID``
+    or ``-//django-icalendar//django-icalendar//EN`` when blank."""
+
     color = models.CharField(
         _("color"),
         max_length=50,
         blank=True,
         help_text=_("CSS3 color name or hex value, e.g. 'tomato' or '#FF6347'."),
     )
+    """CSS3 color name or hex value emitted as the ``COLOR`` property
+    (RFC 7986), e.g. ``"tomato"`` or ``"#FF6347"``."""
+
     method = models.CharField(
         _("method"),
         max_length=30,
         blank=True,
         help_text=_("iTIP method (RFC 5546): PUBLISH, REQUEST, REPLY, etc."),
     )
+    """iTIP method (RFC 5546) such as ``PUBLISH`` or ``REQUEST``.
+    Leave blank to omit the ``METHOD`` property."""
 
     class Meta:
         """Database options for CalendarModel."""

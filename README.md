@@ -40,6 +40,8 @@
 
 Django models for storing and exporting RFC 5545 iCalendar data.
 
+> **Early-stage project.** The API is not yet stable and may change without notice.
+
 ## Installation
 
 Install this via pip (or your favourite package manager):
