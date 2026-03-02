@@ -70,6 +70,9 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/django_icalendar*.rst
+docs/modules.rst
+innitial_plan.md
 
 # PyBuilder
 .pybuilder/
