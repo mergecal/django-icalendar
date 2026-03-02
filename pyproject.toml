@@ -42,6 +42,7 @@ urls.repository = "https://github.com/mergecal/django-icalendar"
 [dependency-groups]
 dev = [
   "coverage",
+  "django-stubs[compatible-mypy]",
   "factory-boy>=3.3",
   "pytest==9.*",
   "pytest-django==4.*",
