@@ -92,6 +92,7 @@ lint.ignore = [
   "D212", # Multi-line docstring summary should start at the first line
   "D401", # First line of docstring should be in imperative mood
 ]
+lint.per-file-ignores."**/migrations/**" = [ "D", "E501", "RUF012" ]
 lint.per-file-ignores."conftest.py" = [ "D100" ]
 lint.per-file-ignores."docs/conf.py" = [ "D100" ]
 lint.per-file-ignores."setup.py" = [ "D100" ]
@@ -101,6 +102,7 @@ lint.per-file-ignores."tests/**/*" = [
   "D102",
   "D103",
   "D104",
+  "D205",
   "S101",
 ]
 lint.isort.known-first-party = [ "django_icalendar", "tests" ]
@@ -145,17 +147,22 @@ disallow_incomplete_defs = true
 disallow_untyped_defs = true
 mypy_path = "src/"
 no_implicit_optional = true
+plugins = [ "mypy_django_plugin.main" ]
 show_error_codes = true
 warn_unreachable = true
 warn_unused_ignores = true
 exclude = [
   "docs/.*",
   "setup.py",
+  ".*/migrations/.*",
 ]
 overrides = [
   { module = "tests.*", allow_untyped_defs = true },
   { module = "docs.*", ignore_errors = true },
 ]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
 
 [tool.semantic_release]
 version_toml = [ "pyproject.toml:project.version" ]
